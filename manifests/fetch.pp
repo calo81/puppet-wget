@@ -30,6 +30,7 @@ define wget::fetch (
   $group              = undef,
   $mode               = undef,
   $unless             = undef,
+  $notification       = undef,
 ) {
 
   include wget
@@ -199,6 +200,7 @@ define wget::fetch (
       require  => Exec["wget-${name}"],
       backup   => $backup,
       schedule => $schedule,
+      notify   => $notification,
     }
   }
 
